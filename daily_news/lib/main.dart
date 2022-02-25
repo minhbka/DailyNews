@@ -1,3 +1,5 @@
+import 'package:daily_news/src/config/routes/app_routes.dart';
+import 'package:daily_news/src/config/themes/app_theme.dart';
 import 'package:daily_news/src/core/utils/constants.dart';
 import 'package:flutter/material.dart';
 
@@ -14,6 +16,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: kMaterialAppTitle,
       onGenerateRoute: AppRoutes.onGenerateRoutes,
-    )
+      theme: AppTheme.light,
+    );
   }
 }
