@@ -43,6 +43,7 @@ dependencies:
   equatable: ^2.0.3
 
   ionicons: ^0.1.2
+  
 
 dev_dependencies:
   flutter_test:
