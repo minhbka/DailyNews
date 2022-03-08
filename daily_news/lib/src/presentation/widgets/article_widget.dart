@@ -39,7 +39,7 @@ class ArticleWidget extends StatelessWidget {
 
   Widget _buildImage(BuildContext context) {
     return Padding(
-      padding: EdgeInsetsDirectional.only(end: 14),
+      padding: const EdgeInsetsDirectional.only(end: 14),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(20),
         child: Container(

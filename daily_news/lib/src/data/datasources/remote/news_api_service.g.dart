@@ -37,7 +37,6 @@ class _NewsApiService implements NewsApiService {
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = BreakingNewsResponseModel.fromJson(_result.data!);
     final httpResponse = HttpResponse(value, _result);
-    //print("Debug: httpResponse $httpResponse");
     return httpResponse;
   }
 

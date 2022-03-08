@@ -1,7 +1,11 @@
+import 'package:daily_news/src/core/utils/constants.dart';
 import 'package:daily_news/src/domain/entities/source.dart';
 import 'package:equatable/equatable.dart';
+import 'package:floor/floor.dart';
 
+@Entity(tableName: kArticlesTableName)
 class Article extends Equatable{
+  @PrimaryKey(autoGenerate: true)
   final int? id;
   final Source? source;
   final String? author;

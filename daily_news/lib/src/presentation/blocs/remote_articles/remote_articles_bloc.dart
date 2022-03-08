@@ -39,24 +39,24 @@ class RemoteArticlesBloc extends BlockWithState<RemoteArticlesEvent, RemoteArtic
   static const int _pageSize = 20;
 
 
-  // Stream<RemoteArticlesState> _getBreakingNewsArticle(RemoteArticlesEvent event) async*{
-  //   print("Debug: _getBreakingNewsArticle");
-  //   yield* runBlocProcess(() async*{
-  //     print("Debug: runBlocProcess");
-  //     final dataState = await _getArticlesUseCase(
-  //       params: ArticlesRequestParams(page: _page)
-  //     );
-  //     print("Debug: ${dataState.data}");
-  //     if(dataState is DataSuccess && dataState.data != null && dataState.data!.isNotEmpty){
-  //       final articles = dataState.data!;
-  //       final noMoreData = articles.length < _pageSize;
-  //       _article.addAll(articles);
-  //       _page++;
-  //       yield RemoteArticlesDone(_article, noMoreData: noMoreData);
-  //     }
-  //     if(dataState is DataFailed){
-  //       yield RemoteArticlesError(dataState.error);
-  //     }
-  //   });
-  // }
+  Stream<RemoteArticlesState> _getBreakingNewsArticle(RemoteArticlesEvent event) async*{
+    print("Debug: _getBreakingNewsArticle");
+    yield* runBlocProcess(() async*{
+      print("Debug: runBlocProcess");
+      final dataState = await _getArticlesUseCase(
+        params: ArticlesRequestParams(page: _page)
+      );
+      print("Debug: ${dataState.data}");
+      if(dataState is DataSuccess && dataState.data != null && dataState.data!.isNotEmpty){
+        final articles = dataState.data!;
+        final noMoreData = articles.length < _pageSize;
+        _article.addAll(articles);
+        _page++;
+        yield RemoteArticlesDone(_article, noMoreData: noMoreData);
+      }
+      if(dataState is DataFailed){
+        yield RemoteArticlesError(dataState.error);
+      }
+    });
+  }
 }

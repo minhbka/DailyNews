@@ -2,7 +2,7 @@ import 'package:daily_news/src/config/routes/app_routes.dart';
 import 'package:daily_news/src/config/themes/app_theme.dart';
 import 'package:daily_news/src/core/utils/constants.dart';
 import 'package:daily_news/src/injector.dart';
-import 'package:daily_news/src/presentation/blocs/remote_articles_bloc.dart';
+import 'package:daily_news/src/presentation/blocs/remote_articles/remote_articles_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

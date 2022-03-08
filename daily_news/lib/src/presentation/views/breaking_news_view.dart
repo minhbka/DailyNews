@@ -1,7 +1,7 @@
 import 'package:daily_news/src/core/bloc/bloc_with_state.dart';
 import 'package:daily_news/src/core/utils/constants.dart';
 import 'package:daily_news/src/domain/entities/article.dart';
-import 'package:daily_news/src/presentation/blocs/remote_articles_bloc.dart';
+import 'package:daily_news/src/presentation/blocs/remote_articles/remote_articles_bloc.dart';
 import 'package:daily_news/src/presentation/widgets/article_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -37,7 +37,7 @@ class BreakingNewsView extends HookWidget {
             onTap: () => _onShowSavedArticlesViewTapped(context),
             child: const Padding(
               padding: EdgeInsets.symmetric(horizontal: 14),
-              child: Icon(Ionicons.bookmark),
+              child: Icon(Ionicons.bookmark, color: Colors.black,),
             ),
           ),
         )
@@ -109,6 +109,7 @@ class BreakingNewsView extends HookWidget {
   }
 
   void _onArticlePressed(BuildContext context, Article article) {
+    print("Debug: Article: $article");
     Navigator.pushNamed(context, '/ArticleDetailsView', arguments: article);
   }
 

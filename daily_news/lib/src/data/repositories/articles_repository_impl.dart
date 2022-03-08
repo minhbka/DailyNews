@@ -1,13 +1,15 @@
 import 'dart:io';
 import 'package:daily_news/src/core/params/article_request.dart';
 import 'package:daily_news/src/core/resources/data_state.dart';
+import 'package:daily_news/src/data/datasources/local/app_database.dart';
 import 'package:daily_news/src/data/datasources/remote/news_api_service.dart';
 import 'package:daily_news/src/domain/entities/article.dart';
 import 'package:daily_news/src/domain/repositories/articles_repository.dart';
 import 'package:dio/dio.dart';
 class ArticlesRepositoryImpl implements ArticlesRepository{
   final NewsApiService _newsApiService;
-  const ArticlesRepositoryImpl(this._newsApiService);
+  final AppDatabase _appDatabase;
+  const ArticlesRepositoryImpl(this._newsApiService, this._appDatabase);
   @override
   Future<DataState<List<Article>>> getBreakingNewsArticles(ArticlesRequestParams? params) async {
     print("Debug: ArticlesRepositoryImpl getBreakingNewsArticles");
@@ -37,6 +39,21 @@ class ArticlesRepositoryImpl implements ArticlesRepository{
       print("Debug: $e");
       return DataFailed(e);
     }
+  }
+
+  @override
+  Future<List<Article>> getSavedArticles() {
+    return _appDatabase.articleDao.getAllArticles();
+  }
+
+  @override
+  Future<void> removeArticle(Article article) {
+    return _appDatabase.articleDao.deleteArticle(article);
+  }
+
+  @override
+  Future<void> saveArticle(Article article) {
+    return _appDatabase.articleDao.insertArticle(article);
   }
 
 }
